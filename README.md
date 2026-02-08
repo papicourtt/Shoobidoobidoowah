@@ -1,2 +1,186 @@
-# Shoobidoobidoowah
-My patty
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Patty 💐</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg,#ffd6e7,#fff);
+    text-align: center;
+    padding: 40px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 520px;
+    position: relative;
+    z-index: 1;
+}
+h2 { color: #ff4da6; }
+p { font-size: 18px; line-height: 1.7; }
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4da6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover { background: #ff1a8c; }
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    text-align: left;
+}
+.hidden {
+    display: none;
+    margin-top: 15px;
+    font-style: italic;
+    color: #ff4da6;
+}
+#countdown {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #ff4da6;
+}
+.flower {
+    position: fixed;
+    top: -50px;
+    font-size: 30px;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+img.slideshow {
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+<source src="YOUR_MP3_DIRECT_LINK_HERE" type="audio/mp3">
+</audio>
+
+<div class="card">
+
+<!-- Slideshow -->
+<img id="slideshow" class="slideshow" src="https://raw.githubusercontent.com/username/patty-website/main/photo1.jpg">
+
+<h2>Good Luck sa Review Mo Patty 💐</h2>
+
+<p>
+Gusto ko lang mag send ng flowers for you 🌸  
+Proud ako sa effort mo at naniniwala ako sayo.  
+Kayang kaya mo yan.
+</p>
+
+<h3>⏳ Countdown to May 20, 2026</h3>
+<div id="countdown"></div>
+
+<br>
+<button onclick="openPopup()">Love Letter 💌</button>
+<button onclick="showHidden()">Click Me 👀</button>
+
+<p id="hiddenMsg" class="hidden">
+Surprise... I'm always rooting for you, not just sa review mo, but in everything you dream of. 🤍
+</p>
+
+</div>
+
+<div class="popup" id="popup">
+<div class="popup-content">
+<h3>For You Patty 💌</h3>
+<p>
+Proud ako sayo palagi.  
+I'm cheering for you sa review mo at sa lahat ng pangarap mo.  
+Keep going, I believe in you always 🌸
+</p>
+<button onclick="closePopup()">Close</button>
+</div>
+</div>
+
+<script>
+/* Popup */
+function openPopup(){ document.getElementById("popup").style.display="flex"; }
+function closePopup(){ document.getElementById("popup").style.display="none"; }
+
+/* Hidden Message */
+function showHidden(){ document.getElementById("hiddenMsg").style.display="block"; }
+
+/* Countdown Timer */
+var reviewDate = new Date("May 20, 2026 08:00:00").getTime();
+setInterval(function() {
+    var now = new Date().getTime();
+    var distance = reviewDate - now;
+
+    var days = Math.floor(distance / (1000*60*60*24));
+    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    var seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = days + " days " + hours + "h " + minutes + "m " + seconds + "s left";
+}, 1000);
+
+/* Falling Flowers */
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (Math.random() * 5 + 3) + "s";
+    flower.style.fontSize = (Math.random() * 30 + 20) + "px";
+    document.body.appendChild(flower);
+    setTimeout(() => { flower.remove(); }, 8000);
+}
+setInterval(createFlower, 500);
+
+/* Slideshow */
+var images = [
+    "https://raw.githubusercontent.com/username/patty-website/main/photo1.jpg",
+    "https://raw.githubusercontent.com/username/patty-website/main/photo2.jpg",
+    "https://raw.githubusercontent.com/username/patty-website/main/photo3.jpg",
+    "https://raw.githubusercontent.com/username/patty-website/main/photo4.jpg",
+    "https://raw.githubusercontent.com/username/patty-website/main/photo5.jpg"
+    // add more photos here
+];
+var index = 0;
+setInterval(function() {
+    index = (index + 1) % images.length;
+    document.getElementById("slideshow").src = images[index];
+}, 3000);
+</script>
+
+</body>
+</html>
